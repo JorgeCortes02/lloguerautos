@@ -7,3 +7,12 @@ class AutomobilAdmin(admin.ModelAdmin):
     
 
 admin.site.register(Automobil, AutomobilAdmin)
+
+
+class ReservaAdmin(admin.ModelAdmin):
+    list_display = ('automobil', 'usuario', 'data_inici', 'data_fi')  # Muestra estos campos
+    search_fields = ('automobil__marca', 'usuario__username')  # Permite búsqueda
+    list_filter = ('data_inici', 'automobil')  # Filtros útiles
+    ordering = ('-data_inici',)  # Orden por fecha descendente
+
+admin.site.register(Reserva, ReservaAdmin)
